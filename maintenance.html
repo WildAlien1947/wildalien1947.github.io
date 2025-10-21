@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site Under Maintenance</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Use Inter Font -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fb;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-4">
+
+    <!-- Maintenance Card Container -->
+    <div class="max-w-xl w-full bg-white shadow-2xl rounded-xl p-8 md:p-12 text-center border-t-4 border-indigo-600">
+
+        <!-- Icon/Status -->
+        <div class="mb-6">
+            <svg class="w-16 h-16 text-indigo-500 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8h12a2 2 0 002-2V8a2 2 0 00-2-2H6a2 2 0 00-2 2v10a2 2 0 002 2zm7-5a1 1 0 10-2 0 1 1 0 002 0z"></path>
+            </svg>
+        </div>
+
+        <!-- Main Heading -->
+        <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">
+            We're Under Maintenance
+        </h1>
+
+        <!-- Detail Message -->
+        <p class="text-gray-600 mb-8 text-lg">
+            We apologize for the inconvenience! We are performing critical updates to improve the website's speed and security. We'll be back online soon.
+        </p>
+
+        <!-- Countdown Timer Section -->
+        <div class="space-y-4">
+            <p class="text-sm font-semibold text-indigo-600 uppercase tracking-wider">
+                Expected Back Online In:
+            </p>
+            <div id="countdown" class="flex justify-center space-x-4 text-gray-900">
+                <!-- Timer elements will be injected here by JavaScript -->
+            </div>
+        <!-- Contact/Follow-up Info -->
+        <div class="mt-10 pt-6 border-t border-gray-100">
+            <p class="text-sm text-gray-500">
+                Need to contact us urgently? Please email us at <a href="mailto:support@example.com" class="text-indigo-600 hover:text-indigo-800 font-medium transition duration-150">support@example.com</a>.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // --- JavaScript for the Countdown Timer ---
+
+        // Set the target date and time when maintenance should end (e.g., 24 hours from now)
+        // You should change this timestamp before deploying!
+        // Format: 'Oct 21, 2025 10:00:00 GMT+00:00'
+        const targetDate = new Date().getTime() + (30 * 60 * 60 * 1000); // Set to 24 hours from now
+
+        const countdownEl = document.getElementById('countdown');
+        const messageEl = document.getElementById('message');
+
+        function formatTime(t) {
+            // Function to pad single digit numbers with a leading zero
+            return t < 10 ? '0' + t : t;
+        }
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            if (distance < 0) {
+                clearInterval(interval);
+                countdownEl.innerHTML = '';
+                messageEl.classList.remove('hidden');
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            const timeParts = [
+                { value: days, label: 'DAYS' },
+                { value: hours, label: 'HOURS' },
+                { value: minutes, label: 'MINUTES' },
+                { value: seconds, label: 'SECONDS' }
+            ];
+
+            countdownEl.innerHTML = timeParts.map(part => `
+                <div class="flex flex-col items-center">
+                    <span class="text-4xl md:text-5xl font-extrabold text-indigo-600">
+                        ${formatTime(part.value)}
+                    </span>
+                    <span class="text-xs font-medium text-gray-400 mt-1">
+                        ${part.label}
+                    </span>
+                </div>
+            `).join('');
+        }
+
+        // Run the function immediately and then set an interval
+        updateCountdown();
+        const interval = setInterval(updateCountdown, 1000);
+
+    </script>
+</body>
+</html>
