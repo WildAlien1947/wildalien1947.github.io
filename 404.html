@@ -3,72 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page Not Found - 404 Error</title>
+    <title>Page Not Found - System Breach</title>
+    <!-- Load Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        /* Custom font and animation for dramatic effect */
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
         body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 50px;
-            background-color: #f4f4f4;
-            color: #333;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh; /* Make sure it takes up full viewport height */
-            margin: 0;
+            font-family: 'Inter', sans-serif;
+            animation: background-pulse 20s infinite alternate;
         }
-        .card {
-            background-color: #fff;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            max-width: 500px;
-            width: 100%;
+
+        /* Glitch effect on the main 404 text */
+        .glitch-text {
+            font-family: 'Orbitron', sans-serif;
+            text-shadow: 0 0 5px #f87171, 0 0 10px #f87171; /* Red neon glow */
+            animation: glitch 1.5s infinite alternate;
         }
-        h1 {
-            color: #dc3545; /* A standard error color */
-            font-size: 2.5em;
-            margin-bottom: 15px;
+
+        @keyframes background-pulse {
+            from { background-color: #111827; } /* Dark Gray-900 */
+            to { background-color: #0d121c; } /* Slightly darker */
         }
-        p {
-            font-size: 1.1em;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-        a {
-            color: #007bff;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        .suggestions ul {
-            list-style: none;
-            padding: 0;
-            margin-top: 25px;
-        }
-        .suggestions li {
-            margin-bottom: 10px;
+
+        @keyframes glitch {
+            0% { transform: translate(0, 0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-1px, -1px); }
+            60% { transform: translate(1px, 2px); }
+            80% { transform: translate(2px, -1px); }
+            100% { transform: translate(0, 0); }
         }
     </style>
 </head>
-<body>
-    <div class="card">
-        <h1>404 - Page Not Found</h1>
-        <p>
+<body class="bg-gray-900 text-gray-200 flex justify-center items-center min-h-screen p-4">
+    <div class="max-w-xl w-full p-8 md:p-12 bg-gray-800/70 backdrop-blur-sm rounded-xl border border-red-500/50 shadow-2xl shadow-red-900/40">
+        
+        <div class="text-center mb-10">
+            <!-- Large, dramatic 404 with glitch effect -->
+            <h1 class="glitch-text text-8xl md:text-9xl font-extrabold text-red-500 mb-4">404</h1>
+            
+            <h2 class="text-3xl font-bold text-red-400 uppercase tracking-wider border-b border-red-500/40 pb-3">
+                File System Access Denied
+            </h2>
+        </div>
+
+        <p class="text-lg text-gray-300 mb-6 text-center">
             Oops! The page you're looking for doesn't seem to exist.
             It might have been moved, deleted, or you might have typed the address incorrectly.
         </p>
-        <div class="suggestions">
-            <p>Here are some things you can try:</p>
-            <ul>
-                <li><a href="/">Go to the homepage</a></li>
-                <li>Check the URL for any typos.</li>
-                <li>Use the navigation menu to find what you're looking for.</li>
+        
+        <div class="suggestions mt-8 text-center">
+            <p class="text-indigo-400 font-semibold mb-4">— Suggested Protocol Recalibration —</p>
+            <ul class="space-y-3 list-none p-0 text-left w-max mx-auto">
+                <li class="flex items-center space-x-2">
+                    <span class="text-red-500 font-bold">•</span>
+                    <a href="https://wildalien1947.github.io" class="text-indigo-300 hover:text-indigo-400 font-medium transition duration-200">
+                        Go to the homepage
+                    </a>
+                </li>
+                <li class="flex items-center space-x-2 text-gray-400">
+                    <span class="text-red-500 font-bold">•</span>
+                    <span>Check the URL for any typos.</span>
+                </li>
+                <li class="flex items-center space-x-2 text-gray-400">
+                    <span class="text-red-500 font-bold">•</span>
+                    <span>Use the navigation menu to find what you're looking for.</span>
+                </li>
             </ul>
         </div>
-        <p>We apologize for the inconvenience.</p>
+
+        <p class="text-sm text-gray-500 mt-8 text-center">
+            We apologize for the inconvenience. Report error code 404 to system administrator.
+        </p>
+
     </div>
 </body>
 </html>
