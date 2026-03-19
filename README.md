@@ -1,4 +1,4 @@
-SQL Code: 
+How To Use:
 
 1. Open phpMyAdmin
 Make sure your XAMPP Control Panel has the "MySQL" module started (it should be green).
